@@ -8,14 +8,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({ limit: '10mb' }));
 
 const credentials = {
-  host: '154.56.47.52',
-  user: 'u196388150_SU',
-  password: 'E9n8@8xW9KB^6',
-  database: 'u196388150_SU'
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'hea'
 };
 
   
 
+app.get('/', (req, res) => {
+  res.send('hola desde tu primera ruta de la Api');
+});
 var connection = mysql.createConnection(credentials);
 try {
     connection.connect();
@@ -23,9 +26,6 @@ try {
   } catch (error) {
     console.error('Error al conectar a MySQL:', error);
   }
-app.get('/', (req, res) => {
-  res.send('hola desde tu primera ruta de la Api');
-});
 
 
 app.post('/api/login', (req, res) => {
